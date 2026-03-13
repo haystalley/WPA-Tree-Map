@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Tree Care Map</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+#map {
+height: 100vh;
+width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+// CHANGE THESE TO MATCH YOUR IMAGE SIZE
+var width = 1397;
+var height = 1045;
+
+var bounds = [[0,0],[height,width]];
+
+var map = L.map('map', {
+crs: L.CRS.Simple,
+minZoom: -1
+});
+
+var image = L.imageOverlay('wpa-map.png', bounds).addTo(map);
+
+map.fitBounds(bounds);
+
+// --------------------------------
+// CLICK MAP TO SEE COORDINATES
+// --------------------------------
+
+var popup = L.popup();
+
+function onMapClick(e) {
+popup
+.setLatLng(e.latlng)
+.setContent("Coordinates: [" + Math.round(e.latlng.lat) + ", " + Math.round(e.latlng.lng) + "]")
+.openOn(map);
+}
+
+map.on('click', onMapClick);
+
+// --------------------------------
+// TREE MARKERS
+// --------------------------------
+
+L.marker([44,818]).addTo(map)
+.bindPopup("<b>Tree1</b><br><img src='images/tree01.jpg' width='200'>");
+
+L.marker([104,876]).addTo(map)
+.bindPopup("<b>Tree2</b><br><img src='images/tree02.jpg' width='200'>");
+
+L.marker([130,849]).addTo(map)
+.bindPopup("<b>Tree3</b><br><img src='images/tree03.jpg' width='200'>");
+
+L.marker([300,960]).addTo(map)
+.bindPopup("<b>Tree4</b><br><img src='images/tree26.jpg' width='200'>");
+
+L.marker([400,1002]).addTo(map)
+.bindPopup("<b>Tree5</b><br><img src='images/tree06.jpg' width='200'>");
+
+L.marker([690,1245]).addTo(map)
+.bindPopup("<b>Tree6</b><br><img src='images/tree11.jpg' width='200'>");
+
+L.marker([720,1254]).addTo(map)
+.bindPopup("<b>Tree7</b><br><img src='images/tree12.jpg' width='200'>");
+
+L.marker([948,890]).addTo(map)
+.bindPopup("<b>Tree8</b><br><img src='images/tree13.jpg' width='200'>");
+
+L.marker([766,658]).addTo(map)
+.bindPopup("<b>Tree9</b><br><img src='images/tree14.jpg' width='200'>");
+
+L.marker([732,638]).addTo(map)
+.bindPopup("<b>Tree10</b><br><img src='images/tree15.jpg' width='200'>");
+
+L.marker([584,524]).addTo(map)
+.bindPopup("<b>Tree12</b><br><img src='images/tree17.jpg' width='200'>");
+
+L.marker([662,582]).addTo(map)
+.bindPopup("<b>Tree11</b><br><img src='images/tree16.jpg' width='200'>");
+
+L.marker([388,722]).addTo(map)
+.bindPopup("<b>Tree13</b><br><img src='images/tree22.jpg' width='200'>");
+
+L.marker([478,570]).addTo(map)
+.bindPopup("<b>Tree14</b><br><img src='images/tree21.jpg' width='200'>");
+
+L.marker([408,786]).addTo(map)
+.bindPopup("<b>Tree15</b><br><img src='images/tree24.jpg' width='200'>");
+
+L.marker([418,726]).addTo(map)
+.bindPopup("<b>Tree16</b><br><img src='images/tree23.jpg' width='200'>");
+
+L.marker([288,882]).addTo(map)
+.bindPopup("<b>Tree17</b><br><img src='images/tree25.jpg' width='200'>");
+
+L.marker([158,672]).addTo(map)
+.bindPopup("<b>Tree18</b><br><img src='images/tree28.jpg' width='200'>");
+
+L.marker([324,378]).addTo(map)
+.bindPopup("<b>Tree19</b><br><img src='images/tree19.jpg' width='200'>");
+
+L.marker([388,370]).addTo(map)
+.bindPopup("<b>Tree20</b><br><img src='images/tree18.jpg' width='200'>");
+
+L.marker([246,472]).addTo(map)
+.bindPopup("<b>Tree21</b><br><img src='images/tree20.jpg' width='200'>");
+
+
+// --------------------------------
+// AREA POLYGON
+// --------------------------------
+
+var orchard = L.polygon([
+[249,962],
+[238,972],
+[110,904],
+[118,880],
+],{
+color:'green'
+}).addTo(map);
+
+orchard.bindPopup("<b>Hedge22</b><br><img src='images/tree05.jpg' width='200'>");
+
+var orchard = L.polygon([
+[536,1136],
+[506,1120],
+[506,1130],
+[526,1142],
+],{
+color:'green'
+}).addTo(map);
+
+orchard.bindPopup("<b>Hedge23</b><br><img src='images/tree09.jpg' width='200'>");
+
+var orchard = L.polygon([
+[605,1180],
+[575,1164],
+[575,1174],
+[595,1186],
+],{
+color:'green'
+}).addTo(map);
+
+orchard.bindPopup("<b>Hedge24</b><br><img src='images/tree10.jpg' width='200'>");
+
+</script>
+
+</body>
+</html>
